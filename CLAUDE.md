@@ -34,17 +34,17 @@ make dev name=PKG      # Add dev dependency
 
 ### Other Commands
 ```bash
-make run               # Run as module: python -m your_package_name
+make run               # Run as module: python -m samud
 make build             # Build wheel/sdist
 make clean             # Remove caches and build artifacts
 ```
 
 ## Project Structure
 
-- Currently a template project with placeholder package name `your_package_name`
+- Package name: `samud` (San Antonio MUD)
 - Uses Python 3.11+ with modern tooling (ruff, mypy, pytest)
 - Configured for strict type checking and code formatting
-- The actual MUD implementation needs to be built from scratch
+- Hardcoded configuration: port 2323, SQLite database at `samud.db`
 
 ## Key Requirements to Implement
 
@@ -52,12 +52,13 @@ make clean             # Remove caches and build artifacts
 - Telnet server on port 2323
 - User authentication (signup/login)
 - SQLite database for player state persistence
-- Room-based world with San Antonio landmarks:
-  - The Alamo Plaza
-  - River Walk North/South
+- Room-based world with 7 San Antonio landmarks:
+  - The Alamo Plaza (starting location)
+  - River Walk North
+  - River Walk South
   - The Pearl
   - Tower of the Americas
-  - Mission San Jose
+  - Mission San José
   - Southtown
 
 ### Essential Commands
@@ -73,7 +74,7 @@ make clean             # Remove caches and build artifacts
 ### Architecture Considerations
 - Async/await for handling multiple concurrent telnet connections
 - Separate modules for: networking, world/rooms, player management, commands, database
-- Event system for broadcasting messages between players
+- Simple message broadcasting system by iterating connected players
 - Clean separation between game logic and network handling
 
 ## Tool Configuration
